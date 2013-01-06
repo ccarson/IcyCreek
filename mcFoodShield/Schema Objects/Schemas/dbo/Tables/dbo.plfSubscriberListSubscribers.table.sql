@@ -1,0 +1,26 @@
+﻿CREATE TABLE [dbo].[plfSubscriberListSubscribers] (
+    [subscriberListSubscriberId] INT            IDENTITY (1, 1) NOT NULL,
+    [subscriberListId]           INT            NULL,
+    [subscriberDateAdded]        DATETIME       NULL,
+    [subscriberEmailAddress]     NVARCHAR (150) NULL,
+    [subscriberName]             NVARCHAR (150) NULL,
+    [subscriberFirstName]        NVARCHAR (100) NULL,
+    [subscriberLastName]         NVARCHAR (100) NULL,
+    [subscriberMethodsubscribed] NVARCHAR (50)  NULL,
+    [subscriberUnsubscribed]     NVARCHAR (50)  NULL,
+    [subscriberUID]              NVARCHAR (255) NULL,
+    [clientId]                   INT            NULL,
+    [subscriberBounced]          NVARCHAR (50)  NULL,
+    [subscriberBounceCount]      INT            NULL,
+    [subscriberDeleted]          NVARCHAR (50)  NULL,
+    [subscriberDateBounced]      DATETIME       NULL,
+    [subscriberDateDeleted]      DATETIME       NULL,
+    [subscriberDateUnsubscribed] DATETIME       NULL,
+    [subscriberValidated]        NVARCHAR (50)  NULL,
+    CHECK ([subscriberMethodsubscribed]='SUBSCRIBED' OR [subscriberMethodsubscribed]='IMPORTED'),
+    CHECK ([subscriberUnsubscribed]='YES' OR [subscriberUnsubscribed]='NO'),
+    CHECK ([subscriberBounced]='YES' OR [subscriberBounced]='NO'),
+    CHECK ([subscriberDeleted]='YES' OR [subscriberDeleted]='NO'),
+    CHECK ([subscriberValidated]='YES' OR [subscriberValidated]='NO')
+);
+

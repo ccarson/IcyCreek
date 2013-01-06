@@ -1,0 +1,3 @@
+﻿ALTER TABLE [dbo].[learn_questiontypes]
+    ADD CONSTRAINT [PK_learn_questiontypes_questionTypeID] PRIMARY KEY CLUSTERED ([questionTypeID] ASC) WITH (ALLOW_PAGE_LOCKS = ON, ALLOW_ROW_LOCKS = ON, PAD_INDEX = OFF, IGNORE_DUP_KEY = OFF, STATISTICS_NORECOMPUTE = OFF);
+

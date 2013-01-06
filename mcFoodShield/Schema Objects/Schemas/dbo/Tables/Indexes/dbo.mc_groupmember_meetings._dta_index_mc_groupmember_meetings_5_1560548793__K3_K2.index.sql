@@ -1,0 +1,4 @@
+﻿CREATE NONCLUSTERED INDEX [_dta_index_mc_groupmember_meetings_5_1560548793__K3_K2]
+    ON [dbo].[mc_groupmember_meetings]([group_id] ASC, [meeting_id] ASC) WITH (ALLOW_PAGE_LOCKS = ON, ALLOW_ROW_LOCKS = ON, PAD_INDEX = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, IGNORE_DUP_KEY = OFF, STATISTICS_NORECOMPUTE = OFF, ONLINE = OFF, MAXDOP = 0)
+    ON [PRIMARY];
+

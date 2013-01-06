@@ -1,0 +1,5 @@
+﻿CREATE NONCLUSTERED INDEX [_dta_index_mc_groups_news_5_1381072156__K6_K1_2_5]
+    ON [dbo].[mc_groups_news]([group_id] ASC, [id] ASC)
+    INCLUDE([headline], [dtCreated]) WITH (ALLOW_PAGE_LOCKS = ON, ALLOW_ROW_LOCKS = ON, PAD_INDEX = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, IGNORE_DUP_KEY = OFF, STATISTICS_NORECOMPUTE = OFF, ONLINE = OFF, MAXDOP = 0)
+    ON [PRIMARY];
+
