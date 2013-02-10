@@ -1,0 +1,2 @@
+﻿CREATE USER [gricks] WITHOUT LOGIN;
+
