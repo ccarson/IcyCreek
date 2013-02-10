@@ -1,0 +1,7 @@
+﻿CREATE TABLE [dbo].[c_timezones] (
+    [id]       NVARCHAR (35)  NOT NULL,
+    [timezone] NVARCHAR (100) NOT NULL,
+    [active]   BIT            NOT NULL,
+    PRIMARY KEY CLUSTERED ([id] ASC) WITH (ALLOW_PAGE_LOCKS = ON, ALLOW_ROW_LOCKS = ON, PAD_INDEX = OFF, IGNORE_DUP_KEY = OFF, STATISTICS_NORECOMPUTE = OFF)
+);
+

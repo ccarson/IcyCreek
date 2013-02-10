@@ -1,0 +1,27 @@
+﻿CREATE TABLE [dbo].[meetings] (
+    [id]                  INT            IDENTITY (249, 1) NOT NULL,
+    [sMeetingName]        NVARCHAR (255) NOT NULL,
+    [iConnectID]          INT            NOT NULL,
+    [dStartDateTime]      DATETIME2 (0)  NOT NULL,
+    [dEndDateTime]        DATETIME2 (0)  NOT NULL,
+    [iTimeZoneID]         INT            NOT NULL,
+    [bRecurring]          BIT            NOT NULL,
+    [bInvites]            BIT            NOT NULL,
+    [iCreatedBy]          INT            NOT NULL,
+    [dCreated]            DATETIME2 (0)  NOT NULL,
+    [bPriority]           BIT            NOT NULL,
+    [bActive]             BIT            NOT NULL,
+    [iSchedulerID]        INT            NOT NULL,
+    [iAgendaID]           INT            NOT NULL,
+    [iMeetingType]        INT            NOT NULL,
+    [bInConnect]          BIT            NOT NULL,
+    [sSummary]            NVARCHAR (MAX) NULL,
+    [sAudioBridge]        NVARCHAR (30)  NULL,
+    [sPasscode]           NVARCHAR (30)  NULL,
+    [sBridgeInstructions] NVARCHAR (MAX) NULL,
+    [sMeetingURL]         NVARCHAR (255) NULL,
+    [groupID]             INT            NOT NULL,
+    [meetingAccess]       NVARCHAR (15)  NOT NULL,
+    [systemID]            INT            NOT NULL
+);
+

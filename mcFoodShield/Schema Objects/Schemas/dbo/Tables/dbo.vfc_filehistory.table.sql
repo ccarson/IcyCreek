@@ -1,0 +1,27 @@
+﻿CREATE TABLE [dbo].[vfc_filehistory] (
+    [ID]                 INT            IDENTITY (668, 1) NOT NULL,
+    [FileID]             INT            NOT NULL,
+    [MIMETypeID]         INT            NOT NULL,
+    [iByteSize]          INT            NOT NULL,
+    [sName]              NVARCHAR (MAX) NOT NULL,
+    [sAuthor]            NVARCHAR (MAX) NULL,
+    [sSource]            NVARCHAR (MAX) NULL,
+    [sRevision]          INT            NOT NULL,
+    [sTitle]             NVARCHAR (MAX) NULL,
+    [sSubject]           NVARCHAR (MAX) NULL,
+    [dtAdded]            DATETIME2 (0)  NOT NULL,
+    [AddedByUserID]      INT            NOT NULL,
+    [dtCheckedOut]       DATETIME2 (0)  NULL,
+    [CheckedOutByUserID] INT            NULL,
+    [dtCheckedIn]        DATETIME2 (0)  NULL,
+    [CheckedInByUserID]  INT            NULL,
+    [sHistoryComments]   NVARCHAR (MAX) NULL,
+    [sFileComments]      NVARCHAR (MAX) NULL,
+    [sDescription]       NVARCHAR (MAX) NULL,
+    [location]           NVARCHAR (MAX) NULL,
+    [pChange]            FLOAT          NULL,
+    [plocation]          NVARCHAR (MAX) NULL,
+    [iMinorRevision]     INT            NOT NULL,
+    [swflocation]        NVARCHAR (200) NULL
+);
+
