@@ -118,12 +118,12 @@
     <Folder Include="Schemas\dbo\Tables\Triggers" />
     <Folder Include="Schemas\dbo\Views" />
     <Folder Include="Schemas\dbo\Views\Triggers" />
-    <Folder Include="Project Scripts\UpdateDevWithProd" />
-    <Folder Include="Project Scripts\UpdateDevWithProd\PostDeploy" />
-    <Folder Include="Project Scripts\UpdateDevWithProd\PostDeployChanges" />
-    <Folder Include="Project Scripts\UpdateDevWithProd\PreDeploy" />
-    <Folder Include="Project Scripts\UpdateDevWithProd\PreDeployChanges" />
-    <Folder Include="Project Scripts\UpdateDevWithProd\Publish XML" />
+    <Folder Include="Project Scripts\master" />
+    <Folder Include="Project Scripts\master\PostDeploy" />
+    <Folder Include="Project Scripts\master\PostDeployChanges" />
+    <Folder Include="Project Scripts\master\PreDeploy" />
+    <Folder Include="Project Scripts\master\PreDeployChanges" />
+    <Folder Include="Project Scripts\master\Publish XML" />
   </ItemGroup>
   <ItemGroup>
     <BuildContributorArgument Include="OutDir=$(OutDir)" />
@@ -2694,12 +2694,12 @@
     <Build Include="Schemas\dbo\Views\dbo.mc_roles_category.view.sql" />
     <Build Include="Schemas\dbo\Views\dbo.mc_roles_relation.view.sql" />
     <Build Include="Schemas\dbo\Views\dbo.vw_default_constraints.view.sql" />
-    <None Include="Project Scripts\UpdateDevWithProd\PostDeploy\PostDeployChanges.script.sql" />
-    <None Include="Project Scripts\UpdateDevWithProd\PostDeploy\PostDeployment.script.sql" />
-    <None Include="Project Scripts\UpdateDevWithProd\PostDeployChanges\PostDeployChangesTemplate.script.sql" />
-    <None Include="Project Scripts\UpdateDevWithProd\PreDeploy\PreDeployChanges.script.sql" />
-    <None Include="Project Scripts\UpdateDevWithProd\PreDeploy\PreDeployment.script.sql" />
-    <None Include="Project Scripts\UpdateDevWithProd\PreDeployChanges\PreDeployChangesTemplate.script.sql" />
+    <Build Include="Project Scripts\master\PostDeploy\PostDeployChanges.script.sql" />
+    <Build Include="Project Scripts\master\PostDeploy\PostDeployment.script.sql" />
+    <Build Include="Project Scripts\master\PostDeployChanges\PostDeployChangesTemplate.script.sql" />
+    <Build Include="Project Scripts\master\PreDeploy\PreDeployChanges.script.sql" />
+    <Build Include="Project Scripts\master\PreDeploy\PreDeployment.script.sql" />
+    <Build Include="Project Scripts\master\PreDeployChanges\PreDeployChangesTemplate.script.sql" />
   </ItemGroup>
   <ItemGroup>
     <SqlCmdVariable Include="PostDeployChanges">
@@ -2712,6 +2712,6 @@
     </SqlCmdVariable>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Project Scripts\UpdateDevWithProd\Publish XML\LocalUpdate.publish.xml" />
+    <None Include="Project Scripts\master\Publish XML\LocalUpdate.publish.xml" />
   </ItemGroup>
 </Project>

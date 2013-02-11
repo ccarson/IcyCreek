@@ -3,7 +3,7 @@
     [reportVersionsID]       UNIQUEIDENTIFIER NOT NULL,
     [displayOrder]           INT              NOT NULL,
     [buttonLabel]            NVARCHAR (50)    NOT NULL,
-    [title]                  NVARCHAR (50)    NOT NULL,
+    [title]                  NVARCHAR (250)   NOT NULL,
     [information]            NVARCHAR (1000)  NOT NULL,
     [outputReportGroups]     NVARCHAR (MAX)   NULL,
     [filterQuestions]        NVARCHAR (MAX)   NOT NULL,

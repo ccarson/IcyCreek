@@ -126,12 +126,12 @@
     <Folder Include="Schemas\Reference\Tables\Keys" />
     <Folder Include="Schemas\Reference\Views" />
     <Folder Include="Database\Routes" />
-    <Folder Include="Project Scripts\Update Dev with Prod" />
-    <Folder Include="Project Scripts\Update Dev with Prod\PostDeploy" />
-    <Folder Include="Project Scripts\Update Dev with Prod\PostDeployChanges" />
-    <Folder Include="Project Scripts\Update Dev with Prod\PreDeploy" />
-    <Folder Include="Project Scripts\Update Dev with Prod\PreDeployChanges" />
-    <Folder Include="Project Scripts\Update Dev with Prod\Publish XML" />
+    <Folder Include="Project Scripts\master" />
+    <Folder Include="Project Scripts\master\PostDeploy" />
+    <Folder Include="Project Scripts\master\PostDeployChanges" />
+    <Folder Include="Project Scripts\master\PreDeploy" />
+    <Folder Include="Project Scripts\master\PreDeployChanges" />
+    <Folder Include="Project Scripts\master\Publish XML" />
   </ItemGroup>
   <ItemGroup>
     <BuildContributorArgument Include="OutDir=$(OutDir)" />
@@ -365,12 +365,13 @@
     <Build Include="Schemas\Meta.schema.sql" />
     <Build Include="Schemas\Reference.schema.sql" />
     <Build Include="Database\Routes\AutoCreatedLocal.route.sql" />
-    <None Include="Project Scripts\Update Dev with Prod\PostDeploy\PostDeployChanges.script.sql" />
-    <None Include="Project Scripts\Update Dev with Prod\PostDeploy\PostDeployment.script.sql" />
-    <None Include="Project Scripts\Update Dev with Prod\PostDeployChanges\PostDeployChangesTemplate.script.sql" />
-    <None Include="Project Scripts\Update Dev with Prod\PreDeploy\PreDeployChanges.script.sql" />
-    <None Include="Project Scripts\Update Dev with Prod\PreDeploy\PreDeployment.script.sql" />
-    <None Include="Project Scripts\Update Dev with Prod\PreDeployChanges\PreDeployChangesTemplate.script.sql" />
+    <Build Include="Schemas\dbo\Programmability\Stored Procedures\dbo.__BuildMaster_ExecSql.sql" />
+    <Build Include="Project Scripts\master\PostDeploy\PostDeployChanges.script.sql" />
+    <Build Include="Project Scripts\master\PostDeploy\PostDeployment.script.sql" />
+    <Build Include="Project Scripts\master\PostDeployChanges\PostDeployChangesTemplate.script.sql" />
+    <Build Include="Project Scripts\master\PreDeploy\PreDeployChanges.script.sql" />
+    <Build Include="Project Scripts\master\PreDeploy\PreDeployment.script.sql" />
+    <Build Include="Project Scripts\master\PreDeployChanges\PreDeployChangesTemplate.script.sql" />
   </ItemGroup>
   <ItemGroup>
     <ArtifactReference Include="$(DacPacRootPath)\Extensions\Microsoft\SQLDB\Extensions\SqlServer\100\SqlSchemas\master.dacpac">
@@ -390,6 +391,7 @@
     </SqlCmdVariable>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Project Scripts\Update Dev with Prod\Publish XML\LocalUpdate.publish.xml" />
+    <None Include="Project Scripts\master\Publish XML\LocalCreate.publish.xml" />
+    <None Include="Project Scripts\master\Publish XML\LocalUpdate.publish.xml" />
   </ItemGroup>
 </Project>

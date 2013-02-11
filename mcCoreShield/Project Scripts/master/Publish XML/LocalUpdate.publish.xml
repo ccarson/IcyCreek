@@ -2,13 +2,13 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <IncludeCompositeObjects>True</IncludeCompositeObjects>
-    <TargetDatabaseName>mcFoodShield</TargetDatabaseName>
-    <DeployScriptFileName>mcFoodShield.sql</DeployScriptFileName>
+    <TargetDatabaseName>mcCoreShield</TargetDatabaseName>
+    <DeployScriptFileName>mcCoreShield.sql</DeployScriptFileName>
     <TargetConnectionString>Data Source=CA-UNUA;Integrated Security=True;Pooling=False</TargetConnectionString>
     <ProfileVersionNumber>1</ProfileVersionNumber>
     <ScriptDatabaseOptions>True</ScriptDatabaseOptions>
-    <BlockOnPossibleDataLoss>True</BlockOnPossibleDataLoss>
-    <CreateNewDatabase>True</CreateNewDatabase>
+    <BlockOnPossibleDataLoss>False</BlockOnPossibleDataLoss>
+    <CreateNewDatabase>False</CreateNewDatabase>
     <IgnoreAnsiNulls>False</IgnoreAnsiNulls>
     <DoNotAlterChangeDataCaptureObjects>False</DoNotAlterChangeDataCaptureObjects>
     <DoNotAlterReplicatedObjects>False</DoNotAlterReplicatedObjects>
@@ -31,6 +31,9 @@
     <ScriptDeployStateChecks>True</ScriptDeployStateChecks>
     <BackupDatabaseBeforeChanges>True</BackupDatabaseBeforeChanges>
     <GenerateSmartDefaults>True</GenerateSmartDefaults>
+    <DropObjectsNotInSource>True</DropObjectsNotInSource>
+    <IgnoreSemicolonBetweenStatements>False</IgnoreSemicolonBetweenStatements>
+    <IgnoreWhitespace>False</IgnoreWhitespace>
   </PropertyGroup>
   <ItemGroup>
     <SqlCmdVariable Include="PostDeployChanges">
