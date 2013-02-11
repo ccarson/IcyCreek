@@ -98,8 +98,6 @@
   <ItemGroup>
     <Folder Include="Properties\" />
     <Folder Include="Database" />
-    <Folder Include="Database\Security" />
-    <Folder Include="Database\Security\Users" />
     <Folder Include="Database\Service Broker" />
     <Folder Include="Database\Service Broker\Routes" />
     <Folder Include="Database\Storage" />
@@ -146,10 +144,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Build Include="Database\Security\Users\dneuman.user.sql" />
-    <Build Include="Database\Security\Users\gmathews.user.sql" />
-    <Build Include="Database\Security\Users\gricks.user.sql" />
-    <Build Include="Database\Security\mcFoodShield.rolememberships.sql" />
     <Build Include="Database\Service Broker\Routes\AutoCreatedLocal.route.sql" />
     <Build Include="Database\Storage\Files\mcfoodshield_log.sqlfile.sql" />
     <Build Include="Database\Storage\Files\PRIMARY.mcfoodshield.sqlfile.sql" />
