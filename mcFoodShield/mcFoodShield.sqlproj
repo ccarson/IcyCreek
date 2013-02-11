@@ -162,7 +162,9 @@
     <Build Include="Schemas\dbo\Programmability\Stored Procedures\dbo.spAddReport.proc.sql" />
     <Build Include="Schemas\dbo\Programmability\Stored Procedures\dbo.spContactSearch.proc.sql" />
     <Build Include="Schemas\dbo\Programmability\Stored Procedures\dbo.spContactSearchOptimized.proc.sql" />
-    <Build Include="Schemas\dbo\Programmability\Stored Procedures\dbo.spGroupMemberFileace.proc.sql" />
+    <Build Include="Schemas\dbo\Programmability\Stored Procedures\dbo.spGroupMemberFileace.proc.sql">
+      <SuppressTSqlWarnings>71502</SuppressTSqlWarnings>
+    </Build>
     <Build Include="Schemas\dbo\Programmability\Stored Procedures\dbo.spMergeOrganizations.proc.sql" />
     <Build Include="Schemas\dbo\Programmability\Stored Procedures\dbo.spSetFileAccess.proc.sql" />
     <Build Include="Schemas\dbo\Programmability\Stored Procedures\dbo.ssoGetUserSystems.proc.sql" />
@@ -2665,7 +2667,9 @@
     <Build Include="Schemas\dbo\Views\Triggers\dbo.mc_contact_verification.process_mc_contact_verification.trigger.sql" />
     <Build Include="Schemas\dbo\Views\Triggers\dbo.mc_org_departments.process_mc_org_departments.trigger.sql" />
     <Build Include="Schemas\dbo\Views\Triggers\dbo.mc_org_location.process_mc_org_location.trigger.sql" />
-    <Build Include="Schemas\dbo\Views\Triggers\dbo.mc_organization.mc_organization_trigger.trigger.sql" />
+    <Build Include="Schemas\dbo\Views\Triggers\dbo.mc_organization.mc_organization_trigger.trigger.sql">
+      <SuppressTSqlWarnings>71502</SuppressTSqlWarnings>
+    </Build>
     <Build Include="Schemas\dbo\Views\Triggers\dbo.mc_roles.process_mc_roles.trigger.sql" />
     <Build Include="Schemas\dbo\Views\Triggers\dbo.mc_roles_category.process_mc_roles_category.trigger.sql" />
     <Build Include="Schemas\dbo\Views\Triggers\dbo.mc_roles_relation.process_mc_roles_relation.trigger.sql" />
