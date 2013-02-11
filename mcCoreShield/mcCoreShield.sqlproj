@@ -22,7 +22,7 @@
     <OutputType>Database</OutputType>
     <RootPath>
     </RootPath>
-    <IncludeSchemaNameInFileName>False</IncludeSchemaNameInFileName>
+    <IncludeSchemaNameInFileName>True</IncludeSchemaNameInFileName>
     <ModelCollation>1033,CI</ModelCollation>
     <DefaultFileStructure>BySchemaAndSchemaType</DefaultFileStructure>
     <LoadSqlClrTypes>True</LoadSqlClrTypes>
@@ -33,7 +33,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{317b093e-ac80-474d-8097-faad1920b6ca}</ProjectGuid>
     <GenerateDatabaseFile>False</GenerateDatabaseFile>
-    <GenerateCreateScript>False</GenerateCreateScript>
+    <GenerateCreateScript>True</GenerateCreateScript>
     <SqlServerVerification>False</SqlServerVerification>
     <TargetLanguage>CS</TargetLanguage>
     <AllowSnapshotIsolation>False</AllowSnapshotIsolation>
@@ -64,7 +64,7 @@
     <IsChangeTrackingOn>False</IsChangeTrackingOn>
     <IsEncryptionOn>False</IsEncryptionOn>
     <NumericRoundAbort>False</NumericRoundAbort>
-    <PageVerify>NONE</PageVerify>
+    <PageVerify>CHECKSUM</PageVerify>
     <Parameterization>SIMPLE</Parameterization>
     <QuotedIdentifier>True</QuotedIdentifier>
     <ReadCommittedSnapshot>False</ReadCommittedSnapshot>
@@ -111,10 +111,6 @@
     <Folder Include="Database\Storage\Partition Schemes" />
     <Folder Include="Database\Triggers" />
     <Folder Include="Project Scripts" />
-    <Folder Include="Project Scripts\master" />
-    <Folder Include="Project Scripts\master\PostDeploy" />
-    <Folder Include="Project Scripts\master\PostDeployChanges" />
-    <Folder Include="Project Scripts\master\PreDeployChanges" />
     <Folder Include="Schemas" />
     <Folder Include="Schemas\Conversion" />
     <Folder Include="Schemas\Conversion\Programmability" />
@@ -228,7 +224,11 @@
     <Folder Include="Schemas\Reference\Views\Indexes" />
     <Folder Include="Schemas\Reference\Views\Statistics" />
     <Folder Include="Schemas\Reference\Views\Triggers" />
-    <Folder Include="Project Scripts\master\PreDeploy" />
+    <Folder Include="Project Scripts\CleanBuild" />
+    <Folder Include="Project Scripts\CleanBuild\PostDeploy" />
+    <Folder Include="Project Scripts\CleanBuild\PostDeployChanges" />
+    <Folder Include="Project Scripts\CleanBuild\PreDeploy" />
+    <Folder Include="Project Scripts\CleanBuild\PreDeployChanges" />
   </ItemGroup>
   <ItemGroup>
     <BuildContributorArgument Include="OutDir=$(OutDir)" />
@@ -242,10 +242,6 @@
     <Build Include="Database\Storage\Files\mcCoreShield_log.sqlfile.sql" />
     <Build Include="Database\Storage\Files\PRIMARY.mcCoreShield.sqlfile.sql" />
     <Build Include="Database\Triggers\captureDDLChanges.ddltrigger.sql" />
-    <None Include="Project Scripts\master\PostDeploy\PostDeployChanges.script.sql" />
-    <PostDeploy Include="Project Scripts\master\PostDeploy\PostDeployment.script.sql" />
-    <None Include="Project Scripts\master\PostDeployChanges\PostDeployChangesTemplate.script.sql" />
-    <None Include="Project Scripts\master\PreDeployChanges\PreDeployChangesTemplate.script.sql" />
     <Build Include="Schemas\Conversion\Programmability\Stored Procedures\Conversion.deployPortalObject.proc.sql" />
     <Build Include="Schemas\dbo\Programmability\Functions\dbo.tvf_getCoreContactsID.function.sql" />
     <Build Include="Schemas\dbo\Programmability\Functions\dbo.tvf_getCoreOrganizationsID.function.sql" />
@@ -487,8 +483,12 @@
     <Build Include="Schemas\Portal.schema.sql" />
     <Build Include="Schemas\Reference.schema.sql" />
     <Build Include="Database\Security\Permissions.sql" />
-    <None Include="Project Scripts\master\PreDeploy\PreDeployChanges.script.sql" />
-    <None Include="Project Scripts\master\PreDeploy\PreDeployment.script.sql" />
+    <None Include="Project Scripts\CleanBuild\PostDeploy\PostDeployChanges.script.sql" />
+    <None Include="Project Scripts\CleanBuild\PostDeploy\PostDeployment.script.sql" />
+    <None Include="Project Scripts\CleanBuild\PostDeployChanges\PostDeployChangesTemplate.script.sql" />
+    <None Include="Project Scripts\CleanBuild\PreDeploy\PreDeployChanges.script.sql" />
+    <None Include="Project Scripts\CleanBuild\PreDeploy\PreDeployment.script.sql" />
+    <None Include="Project Scripts\CleanBuild\PreDeployChanges\PreDeployChangesTemplate.script.sql" />
   </ItemGroup>
   <ItemGroup>
     <ArtifactReference Include="$(DacPacRootPath)\Extensions\Microsoft\SQLDB\Extensions\SqlServer\100\SqlSchemas\master.dacpac">
@@ -496,5 +496,15 @@
       <SuppressMissingDependenciesErrors>False</SuppressMissingDependenciesErrors>
       <DatabaseVariableLiteralValue>master</DatabaseVariableLiteralValue>
     </ArtifactReference>
+  </ItemGroup>
+  <ItemGroup>
+    <SqlCmdVariable Include="PostDeployChanges">
+      <DefaultValue>NO</DefaultValue>
+      <Value>$(SqlCmdVar__2)</Value>
+    </SqlCmdVariable>
+    <SqlCmdVariable Include="PreDeployChanges">
+      <DefaultValue>NO</DefaultValue>
+      <Value>$(SqlCmdVar__1)</Value>
+    </SqlCmdVariable>
   </ItemGroup>
 </Project>

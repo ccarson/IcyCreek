@@ -26,14 +26,14 @@
     <ModelCollation>1033,CI</ModelCollation>
     <DefaultFileStructure>BySchemaAndSchemaType</DefaultFileStructure>
     <LoadSqlClrTypes>True</LoadSqlClrTypes>
-    <RootNamespace>mcCoreShield</RootNamespace>
+    <RootNamespace>mcFoodShield</RootNamespace>
     <DefaultSchema>dbo</DefaultSchema>
     <PreviousProjectVersion>4.0</PreviousProjectVersion>
     <ValidateCasingOnIdentifiers>False</ValidateCasingOnIdentifiers>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{6486d8e7-e4f7-4562-9eb5-d071406a6282}</ProjectGuid>
     <GenerateDatabaseFile>False</GenerateDatabaseFile>
-    <GenerateCreateScript>False</GenerateCreateScript>
+    <GenerateCreateScript>True</GenerateCreateScript>
     <SqlServerVerification>False</SqlServerVerification>
     <TargetLanguage>CS</TargetLanguage>
     <AllowSnapshotIsolation>False</AllowSnapshotIsolation>
@@ -106,11 +106,6 @@
     <Folder Include="Database\Storage\Files" />
     <Folder Include="Database\Storage\Full Text Catalogs" />
     <Folder Include="Project Scripts" />
-    <Folder Include="Project Scripts\master" />
-    <Folder Include="Project Scripts\master\PostDeploy" />
-    <Folder Include="Project Scripts\master\PostDeployChanges" />
-    <Folder Include="Project Scripts\master\PreDeploy" />
-    <Folder Include="Project Scripts\master\PreDeployChanges" />
     <Folder Include="Schemas" />
     <Folder Include="Schemas\dbo" />
     <Folder Include="Schemas\dbo\Programmability" />
@@ -125,6 +120,11 @@
     <Folder Include="Schemas\dbo\Tables\Triggers" />
     <Folder Include="Schemas\dbo\Views" />
     <Folder Include="Schemas\dbo\Views\Triggers" />
+    <Folder Include="Project Scripts\CleanBuild" />
+    <Folder Include="Project Scripts\CleanBuild\PostDeploy" />
+    <Folder Include="Project Scripts\CleanBuild\PostDeployChanges" />
+    <Folder Include="Project Scripts\CleanBuild\PreDeploy" />
+    <Folder Include="Project Scripts\CleanBuild\PreDeployChanges" />
   </ItemGroup>
   <ItemGroup>
     <BuildContributorArgument Include="OutDir=$(OutDir)" />
@@ -154,12 +154,6 @@
     <Build Include="Database\Storage\Files\mcfoodshield_log.sqlfile.sql" />
     <Build Include="Database\Storage\Files\PRIMARY.mcfoodshield.sqlfile.sql" />
     <Build Include="Database\Storage\Full Text Catalogs\SMEprofilesFTC.fulltext.sql" />
-    <None Include="Project Scripts\master\PostDeploy\PostDeployChanges.script.sql" />
-    <PostDeploy Include="Project Scripts\master\PostDeploy\PostDeployment.script.sql" />
-    <None Include="Project Scripts\master\PostDeployChanges\PostDeployChangesTemplate.script.sql" />
-    <None Include="Project Scripts\master\PreDeploy\PreDeployChanges.script.sql" />
-    <PreDeploy Include="Project Scripts\master\PreDeploy\PreDeployment.script.sql" />
-    <None Include="Project Scripts\master\PreDeployChanges\PreDeployChangesTemplate.script.sql" />
     <Build Include="Schemas\dbo\Programmability\Functions\dbo.udfListFromDelimitedString.function.sql" />
     <Build Include="Schemas\dbo\Programmability\Stored Procedures\dbo.coreMeetingsReport.proc.sql" />
     <Build Include="Schemas\dbo\Programmability\Stored Procedures\dbo.findFiles.proc.sql" />
@@ -2701,5 +2695,21 @@
     <Build Include="Schemas\dbo\Views\dbo.mc_roles_category.view.sql" />
     <Build Include="Schemas\dbo\Views\dbo.mc_roles_relation.view.sql" />
     <Build Include="Schemas\dbo\Views\dbo.vw_default_constraints.view.sql" />
+    <None Include="Project Scripts\CleanBuild\PostDeploy\PostDeployChanges.script.sql" />
+    <None Include="Project Scripts\CleanBuild\PostDeploy\PostDeployment.script.sql" />
+    <None Include="Project Scripts\CleanBuild\PostDeployChanges\PostDeployChangesTemplate.script.sql" />
+    <None Include="Project Scripts\CleanBuild\PreDeploy\PreDeployChanges.script.sql" />
+    <None Include="Project Scripts\CleanBuild\PreDeploy\PreDeployment.script.sql" />
+    <None Include="Project Scripts\CleanBuild\PreDeployChanges\PreDeployChangesTemplate.script.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <SqlCmdVariable Include="PostDeployChanges">
+      <DefaultValue>NO</DefaultValue>
+      <Value>$(SqlCmdVar__2)</Value>
+    </SqlCmdVariable>
+    <SqlCmdVariable Include="PreDeployChanges">
+      <DefaultValue>NO</DefaultValue>
+      <Value>$(SqlCmdVar__1)</Value>
+    </SqlCmdVariable>
   </ItemGroup>
 </Project>
