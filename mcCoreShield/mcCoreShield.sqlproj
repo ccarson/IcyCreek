@@ -131,6 +131,7 @@
     <Folder Include="Project Scripts\CleanBuild\PreDeploy" />
     <Folder Include="Project Scripts\CleanBuild\PreDeployChanges" />
     <Folder Include="Database\Routes" />
+    <Folder Include="Project Scripts\CleanBuild\Publish XML" />
   </ItemGroup>
   <ItemGroup>
     <BuildContributorArgument Include="OutDir=$(OutDir)" />
@@ -387,5 +388,9 @@
       <DefaultValue>NO</DefaultValue>
       <Value>$(SqlCmdVar__1)</Value>
     </SqlCmdVariable>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Project Scripts\CleanBuild\Publish XML\LocalUpdate.publish.xml" />
+    <None Include="Project Scripts\CleanBuild\Publish XML\LocalCreate.publish.xml" />
   </ItemGroup>
 </Project>
