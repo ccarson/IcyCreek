@@ -6,7 +6,7 @@ AS
 
    Function:    Reference.tvf_PhoneTypes
      Author:    Chris Carson
-    Purpose:    Creates core version of mcCoreShield.Reference.PhoneTypes showing all portals and values
+    Purpose:    Creates core version of Reference.PhoneTypes showing all portals and values
 
     revisor     date          description
     ---------   -----------   ----------------------------
@@ -30,7 +30,7 @@ RETURN
               , typename      = PhoneTypeName
               , active        = isActive
               , display_order = displayOrder
-          FROM  mcCoreShield.Reference.PhoneTypes
+          FROM  Reference.PhoneTypes
          WHERE  portalName = @portalName AND isExcluded = 1 ) ,
 
         allPortals AS (
@@ -38,9 +38,9 @@ RETURN
               , typename      = PhoneTypeName
               , active        = isActive
               , display_order = displayOrder
-          FROM  mcCoreShield.Reference.PhoneTypes
+          FROM  Reference.PhoneTypes
          WHERE  portalName = 'All'
-           AND  NOT EXISTS ( SELECT 1 FROM mcCoreShield.Reference.PhoneTypes
+           AND  NOT EXISTS ( SELECT 1 FROM Reference.PhoneTypes
                               WHERE PhoneTypeID = 0 AND portalName = @portalName )
             EXCEPT
         SELECT  * FROM exclusions ) ,
@@ -50,7 +50,7 @@ RETURN
               , typename      = PhoneTypeName
               , active        = isActive
               , display_order = displayOrder
-          FROM  mcCoreShield.Reference.PhoneTypes
+          FROM  Reference.PhoneTypes
          WHERE  portalName = @portalName
            AND  PhoneTypeID > 0
            AND  isExcluded = 0 )

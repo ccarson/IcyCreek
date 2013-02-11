@@ -6,7 +6,7 @@ AS
 
    Function:    Reference.tvf_OrganizationTypes
      Author:    Chris Carson
-    Purpose:    Creates core version of mcCoreShield.Reference.OrganizationTypes showing all portals and values
+    Purpose:    Creates core version of Reference.OrganizationTypes showing all portals and values
 
     revisor     date          description
     ---------   -----------   ----------------------------
@@ -29,16 +29,16 @@ RETURN
         SELECT  id       = OrganizationTypeID
               , typename = OrganizationTypeName
               , active   = isActive
-          FROM  mcCoreShield.Reference.OrganizationTypes
+          FROM  Reference.OrganizationTypes
          WHERE  portalName = @portalName AND isExcluded = 1 ) ,
 
         allPortals AS (
         SELECT  id       = OrganizationTypeID
               , typename = OrganizationTypeName
               , active   = isActive
-          FROM  mcCoreShield.Reference.OrganizationTypes
+          FROM  Reference.OrganizationTypes
          WHERE  portalName = 'All'
-           AND  NOT EXISTS ( SELECT 1 FROM mcCoreShield.Reference.OrganizationTypes
+           AND  NOT EXISTS ( SELECT 1 FROM Reference.OrganizationTypes
                               WHERE OrganizationTypeID = 0 AND portalName = @portalName )
             EXCEPT
         SELECT  * FROM exclusions ) ,
@@ -47,7 +47,7 @@ RETURN
         SELECT  id       = OrganizationTypeID
               , typename = OrganizationTypeName
               , active   = isActive
-          FROM  mcCoreShield.Reference.OrganizationTypes
+          FROM  Reference.OrganizationTypes
          WHERE  portalName = @portalName
            AND  OrganizationTypeID > 0
            AND  isExcluded = 0 )

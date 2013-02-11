@@ -6,7 +6,7 @@ AS
 
    Function:    Reference.tvf_EmailTypes
      Author:    Chris Carson
-    Purpose:    Creates core version of mcCoreShield.Reference.EmailTypes showing all portals and values
+    Purpose:    Creates core version of Reference.EmailTypes showing all portals and values
 
     revisor     date          description
     ---------   -----------   ----------------------------
@@ -30,7 +30,7 @@ RETURN
               , typename      = EmailTypeName
               , active        = isActive
               , display_order = displayOrder
-          FROM  mcCoreShield.Reference.EmailTypes
+          FROM  Reference.EmailTypes
          WHERE  portalName = @portalName AND isExcluded = 1 ) ,
 
         allPortals AS (
@@ -38,9 +38,9 @@ RETURN
               , typename      = EmailTypeName
               , active        = isActive
               , display_order = displayOrder
-          FROM  mcCoreShield.Reference.EmailTypes
+          FROM  Reference.EmailTypes
          WHERE  portalName = 'All'
-           AND  NOT EXISTS ( SELECT 1 FROM mcCoreShield.Reference.EmailTypes
+           AND  NOT EXISTS ( SELECT 1 FROM Reference.EmailTypes
                               WHERE EmailTypeID = 0 AND portalName = @portalName )
             EXCEPT
         SELECT  * FROM exclusions ) ,
@@ -50,7 +50,7 @@ RETURN
               , typename      = EmailTypeName
               , active        = isActive
               , display_order = displayOrder
-          FROM  mcCoreShield.Reference.EmailTypes
+          FROM  Reference.EmailTypes
          WHERE  portalName = @portalName
            AND  EmailTypeID > 0
            AND  isExcluded = 0 )
