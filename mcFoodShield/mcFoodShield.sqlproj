@@ -2694,12 +2694,12 @@
     <Build Include="Schemas\dbo\Views\dbo.mc_roles_category.view.sql" />
     <Build Include="Schemas\dbo\Views\dbo.mc_roles_relation.view.sql" />
     <Build Include="Schemas\dbo\Views\dbo.vw_default_constraints.view.sql" />
-    <Build Include="Project Scripts\master\PostDeploy\PostDeployChanges.script.sql" />
-    <Build Include="Project Scripts\master\PostDeploy\PostDeployment.script.sql" />
-    <Build Include="Project Scripts\master\PostDeployChanges\PostDeployChangesTemplate.script.sql" />
-    <Build Include="Project Scripts\master\PreDeploy\PreDeployChanges.script.sql" />
-    <Build Include="Project Scripts\master\PreDeploy\PreDeployment.script.sql" />
-    <Build Include="Project Scripts\master\PreDeployChanges\PreDeployChangesTemplate.script.sql" />
+    <None Include="Project Scripts\master\PostDeploy\PostDeployChanges.script.sql" />
+    <None Include="Project Scripts\master\PostDeploy\PostDeployment.script.sql" />
+    <None Include="Project Scripts\master\PostDeployChanges\PostDeployChangesTemplate.script.sql" />
+    <None Include="Project Scripts\master\PreDeploy\PreDeployChanges.script.sql" />
+    <None Include="Project Scripts\master\PreDeploy\PreDeployment.script.sql" />
+    <None Include="Project Scripts\master\PreDeployChanges\PreDeployChangesTemplate.script.sql" />
   </ItemGroup>
   <ItemGroup>
     <SqlCmdVariable Include="PostDeployChanges">

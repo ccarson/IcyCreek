@@ -366,12 +366,12 @@
     <Build Include="Schemas\Reference.schema.sql" />
     <Build Include="Database\Routes\AutoCreatedLocal.route.sql" />
     <Build Include="Schemas\dbo\Programmability\Stored Procedures\dbo.__BuildMaster_ExecSql.sql" />
-    <Build Include="Project Scripts\master\PostDeploy\PostDeployChanges.script.sql" />
-    <Build Include="Project Scripts\master\PostDeploy\PostDeployment.script.sql" />
-    <Build Include="Project Scripts\master\PostDeployChanges\PostDeployChangesTemplate.script.sql" />
-    <Build Include="Project Scripts\master\PreDeploy\PreDeployChanges.script.sql" />
-    <Build Include="Project Scripts\master\PreDeploy\PreDeployment.script.sql" />
-    <Build Include="Project Scripts\master\PreDeployChanges\PreDeployChangesTemplate.script.sql" />
+    <None Include="Project Scripts\master\PostDeploy\PostDeployChanges.script.sql" />
+    <None Include="Project Scripts\master\PostDeploy\PostDeployment.script.sql" />
+    <None Include="Project Scripts\master\PostDeployChanges\PostDeployChangesTemplate.script.sql" />
+    <None Include="Project Scripts\master\PreDeploy\PreDeployChanges.script.sql" />
+    <None Include="Project Scripts\master\PreDeploy\PreDeployment.script.sql" />
+    <None Include="Project Scripts\master\PreDeployChanges\PreDeployChangesTemplate.script.sql" />
   </ItemGroup>
   <ItemGroup>
     <ArtifactReference Include="$(DacPacRootPath)\Extensions\Microsoft\SQLDB\Extensions\SqlServer\100\SqlSchemas\master.dacpac">
