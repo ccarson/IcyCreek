@@ -103,14 +103,6 @@
     <Folder Include="Database\Triggers" />
     <Folder Include="Project Scripts" />
     <Folder Include="Schemas" />
-    <Folder Include="Schemas\Conversion" />
-    <Folder Include="Schemas\Conversion\Programmability" />
-    <Folder Include="Schemas\Conversion\Programmability\Functions" />
-    <Folder Include="Schemas\Conversion\Programmability\Stored Procedures" />
-    <Folder Include="Schemas\Conversion\Tables" />
-    <Folder Include="Schemas\Conversion\Tables\Triggers" />
-    <Folder Include="Schemas\Conversion\Views" />
-    <Folder Include="Schemas\Conversion\Views\Triggers" />
     <Folder Include="Schemas\dbo" />
     <Folder Include="Schemas\dbo\Programmability" />
     <Folder Include="Schemas\dbo\Programmability\Functions" />
@@ -367,9 +359,7 @@
     <Build Include="Schemas\Reference\Tables\Reference.PhoneTypes.table.sql" />
     <Build Include="Schemas\Reference\Tables\Reference.Verticals.table.sql" />
     <Build Include="Schemas\Reference\Tables\Reference.ZipCodes.table.sql" />
-    <Build Include="Schemas\Conversion.schema.sql" />
     <Build Include="Schemas\Meta.schema.sql" />
-    <Build Include="Schemas\Portal.schema.sql" />
     <Build Include="Schemas\Reference.schema.sql" />
     <None Include="Project Scripts\CleanBuild\PostDeploy\PostDeployChanges.script.sql" />
     <None Include="Project Scripts\CleanBuild\PostDeploy\PostDeployment.script.sql" />
