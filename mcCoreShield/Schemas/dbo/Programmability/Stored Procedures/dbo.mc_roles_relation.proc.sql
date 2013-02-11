@@ -70,11 +70,11 @@ BEGIN
 		INTO #updates
 		FROM @dataXML.nodes('u/data') AS u(data);				
 	
-		UPDATE dbo.RoleRoleCategories SET 
+		UPDATE dbo.RolesRoleCategories SET 
 			RolesID = r.id
 			, RoleCategoriesID = rc.id
 		FROM dbo.RolesRoleCategories as rrc
-		INNER JOIN dbo.vw_transitionRoleRoleCategories AS t ON t.id = rrc.id 
+		INNER JOIN dbo.vw_transitionRolesRoleCategories AS t ON t.id = rrc.id 
 			AND	t.transitionSystemsID = @systemID
 		INNER JOIN #updates AS u ON u.id = t.RolesRoleCategoriesID
 		INNER JOIN dbo.vw_transitionRoles AS r ON r.RolesID = u.role_id

@@ -34,7 +34,7 @@
     <ProjectGuid>{317b093e-ac80-474d-8097-faad1920b6ca}</ProjectGuid>
     <GenerateDatabaseFile>False</GenerateDatabaseFile>
     <GenerateCreateScript>True</GenerateCreateScript>
-    <SqlServerVerification>False</SqlServerVerification>
+    <SqlServerVerification>True</SqlServerVerification>
     <TargetLanguage>CS</TargetLanguage>
     <AllowSnapshotIsolation>False</AllowSnapshotIsolation>
     <AnsiNullDefault>True</AnsiNullDefault>
@@ -184,7 +184,9 @@
     <Build Include="Schemas\dbo\Programmability\Stored Procedures\dbo.mergeOrganizations.proc.sql" />
     <Build Include="Schemas\dbo\Programmability\Stored Procedures\dbo.mergePortalOrganizations.proc.sql" />
     <Build Include="Schemas\dbo\Programmability\Stored Procedures\dbo.process_mc_contact_orgroles.proc.sql" />
-    <Build Include="Schemas\dbo\Programmability\Stored Procedures\dbo.process_mc_organization.proc.sql" />
+    <Build Include="Schemas\dbo\Programmability\Stored Procedures\dbo.process_mc_organization.proc.sql">
+      <SuppressTSqlWarnings>71502</SuppressTSqlWarnings>
+    </Build>
     <Build Include="Schemas\dbo\Tables\Constraints\dbo.Contacts.DF_Contacts_iDoc_Usage.defconst.sql" />
     <Build Include="Schemas\dbo\Tables\Constraints\dbo.Organizations.DF_Organizations_brandID.defconst.sql" />
     <Build Include="Schemas\dbo\Tables\Constraints\dbo.Organizations.DF_Organizations_isDemo.defconst.sql" />

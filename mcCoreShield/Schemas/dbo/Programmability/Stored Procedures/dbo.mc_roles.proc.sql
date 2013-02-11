@@ -77,7 +77,7 @@ BEGIN
 		UPDATE dbo.Roles SET 
 			RoleTitle = u.RoleTitle
 			, isActive = u.Active
-			, parentRolesID = COALESCE( tr2.ID, 0 )
+			, parentRolesID = tr2.ID
 			, statepage_include = u.statepage_include
 		FROM dbo.Roles as r
 		INNER JOIN dbo.vw_transitionRoles AS tr1 ON tr1.id = r.id 

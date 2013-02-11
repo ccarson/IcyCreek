@@ -158,11 +158,11 @@ BEGIN
     INNER JOIN  dbo.vw_transitionRoles AS r 
             ON  r.RolesID = u.role_id AND r.transitionSystemsID = @systemID 
     INNER JOIN  dbo.vw_transitionOrganizations AS o 
-            ON  o.OrganizationIDs = u.org_id AND o.transitionSystemsID = @systemID
+            ON  o.OrganizationsID = u.org_id AND o.transitionSystemsID = @systemID
      LEFT JOIN  dbo.vw_transitionContacts AS c2 
-            ON  c2.contactsID = u.added_by AND tc2.transitionSystemsID = @systemID 
+            ON  c2.contactsID = u.added_by AND c2.transitionSystemsID = @systemID 
      LEFT JOIN  dbo.vw_transitionContacts AS c3 
-            ON  tc3.contactsID = u.modified_by AND tc3.transitionSystemsID = @systemID 
+            ON  c3.contactsID = u.modified_by AND c3.transitionSystemsID = @systemID 
      LEFT JOIN  dbo.vw_transitionOrgDepartments d 
             ON  d.orgDepartmentsID = u.dept_id AND d.transitionSystemsID = @systemID ; 
         END TRY
