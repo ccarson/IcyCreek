@@ -188,7 +188,6 @@
     <Build Include="Schemas\dbo\Programmability\Stored Procedures\dbo.process_mc_organization.proc.sql">
       <SuppressTSqlWarnings>71502</SuppressTSqlWarnings>
     </Build>
-    <Build Include="Schemas\dbo\Tables\Constraints\dbo.Contacts.DF_Contacts_iDoc_Usage.defconst.sql" />
     <Build Include="Schemas\dbo\Tables\Constraints\dbo.Organizations.DF_Organizations_brandID.defconst.sql" />
     <Build Include="Schemas\dbo\Tables\Constraints\dbo.Organizations.DF_Organizations_isDemo.defconst.sql" />
     <Build Include="Schemas\dbo\Tables\Constraints\dbo.OrgDepartments.DF_OrgDepartments_active.defconst.sql" />
@@ -220,15 +219,12 @@
     <Build Include="Schemas\dbo\Tables\Keys\dbo.ContactNotes.FK_ContactNotes_Contacts1.fkey.sql" />
     <Build Include="Schemas\dbo\Tables\Keys\dbo.ContactNotes.PK_ContactNotes.pkey.sql" />
     <Build Include="Schemas\dbo\Tables\Keys\dbo.ContactOrganizations.FK_ContactOrganizations_Contacts.fkey.sql" />
-    <Build Include="Schemas\dbo\Tables\Keys\dbo.ContactOrganizations.FK_ContactOrganizations_Organizations.fkey.sql" />
-    <Build Include="Schemas\dbo\Tables\Keys\dbo.ContactOrganizations.PK_ContactOrganizations.pkey.sql" />
     <Build Include="Schemas\dbo\Tables\Keys\dbo.ContactOrgRoles.FK_ContactOrgRoles_Contacts.fkey.sql" />
     <Build Include="Schemas\dbo\Tables\Keys\dbo.ContactOrgRoles.FK_ContactOrgRoles_Organizations.fkey.sql" />
     <Build Include="Schemas\dbo\Tables\Keys\dbo.ContactOrgRoles.FK_ContactOrgRoles_Roles.fkey.sql" />
     <Build Include="Schemas\dbo\Tables\Keys\dbo.ContactOrgRoles.PK_ContactOrgRoles.pkey.sql" />
     <Build Include="Schemas\dbo\Tables\Keys\dbo.ContactPhones.FK_ContactPhones_Contacts.fkey.sql" />
     <Build Include="Schemas\dbo\Tables\Keys\dbo.ContactPhones.PK_ContactPhones.pkey.sql" />
-    <Build Include="Schemas\dbo\Tables\Keys\dbo.Contacts.PK_Contacts.pkey.sql" />
     <Build Include="Schemas\dbo\Tables\Keys\dbo.ContactSMEProfiles.PK_ContactsSMEProfiles.pkey.sql" />
     <Build Include="Schemas\dbo\Tables\Keys\dbo.ContactVerifications.FK_ContactVerifications_Contacts.fkey.sql" />
     <Build Include="Schemas\dbo\Tables\Keys\dbo.ContactVerifications.FK_ContactVerifications_verifiedBy_Contacts.fkey.sql" />
@@ -277,8 +273,6 @@
     <Build Include="Schemas\dbo\Tables\Statistics\dbo.ContactAddresses._dta_stat_2142435202_8_2.statistic.sql" />
     <Build Include="Schemas\dbo\Tables\Statistics\dbo.ContactEmails._dta_stat_90951896_1_2_3.statistic.sql" />
     <Build Include="Schemas\dbo\Tables\Statistics\dbo.ContactEmails._dta_stat_90951896_3_1.statistic.sql" />
-    <Build Include="Schemas\dbo\Tables\Statistics\dbo.ContactOrganizations._dta_stat_26951668_1_2_3_5.statistic.sql" />
-    <Build Include="Schemas\dbo\Tables\Statistics\dbo.ContactOrganizations._dta_stat_26951668_2_1.statistic.sql" />
     <Build Include="Schemas\dbo\Tables\Statistics\dbo.ContactPhones._dta_stat_2110435088_2_1.statistic.sql" />
     <Build Include="Schemas\dbo\Tables\Statistics\dbo.transitionIdentities._dta_stat_1884338273_1_3_4.statistic.sql" />
     <Build Include="Schemas\dbo\Tables\Statistics\dbo.transitionIdentities._dta_stat_1884338273_2_3_1_4.statistic.sql" />

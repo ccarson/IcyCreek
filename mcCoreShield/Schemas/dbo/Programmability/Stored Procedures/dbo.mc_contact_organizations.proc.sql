@@ -58,7 +58,7 @@ BEGIN
 			AND	c.transitionSystemsID = @systemID
 		INNER JOIN dbo.vw_transitionOrganizations AS o ON i.org_id = o.organizationsID 
 			AND	o.transitionSystemsID = @systemID
-		INNER JOIN dbo.vw_transitionOrgLocations AS loc ON i.location_id = loc.orgLocationsID 
+		LEFT JOIN dbo.vw_transitionOrgLocations AS loc ON i.location_id = loc.orgLocationsID 
 			AND	loc.transitionSystemsID = @systemID
 		LEFT OUTER JOIN dbo.vw_transitionOrgDepartments d ON i.org_dept_id = d.orgDepartmentsID 
 			AND	d.transitionSystemsID = @systemID;
@@ -110,7 +110,7 @@ BEGIN
 			AND c.transitionSystemsID = @systemID
 		INNER JOIN dbo.vw_transitionOrganizations AS o ON u.org_id = o.organizationsID 
 			AND o.transitionSystemsID = @systemID
-		INNER JOIN dbo.vw_transitionOrgLocations AS l ON u.location_id = l.orgLocationsID 
+		LEFT JOIN dbo.vw_transitionOrgLocations AS l ON u.location_id = l.orgLocationsID 
 			AND l.transitionSystemsID = @systemID
 		LEFT OUTER JOIN dbo.vw_transitionOrgDepartments d ON u.org_dept_id = d.orgDepartmentsID 
 			AND d.transitionSystemsID = @systemID;			

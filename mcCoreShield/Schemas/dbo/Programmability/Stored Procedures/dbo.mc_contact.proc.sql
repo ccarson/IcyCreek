@@ -1,4 +1,5 @@
-﻿CREATE PROCEDURE [dbo].[mc_contact] ( 
+﻿
+CREATE PROCEDURE [dbo].[mc_contact] ( 
 	@systemID AS INT, @tableID AS INT
     , @recordsIN AS INT, @dataXML AS XML
     , @operation AS NVARCHAR(20), @errorMessage AS NVARCHAR(50) OUTPUT )
@@ -90,6 +91,7 @@ BEGIN
 			, i.data.value('@iVerifiedBy[1]', 'int') AS iVerifiedBy
 			, i.data.value('@dVerifiedDate[1]', 'datetime2') AS dVerifiedDate
 			, i.data.value('@inetwork[1]', 'int') AS inetwork 
+			, i.data.value('@isSuspect[1]', 'int') AS isSuspect
 		INTO #inserts
 		FROM @dataXML.nodes('i/data') AS i ( data ) ;	
 		
@@ -103,7 +105,7 @@ BEGIN
 			, TzOffset, iDefault_Quota, iDoc_Usage, assist_id, layout, bTOS
 			, bOnlineNow, uID, iwkgrplayout, sAboutMe, folder_id, signature
 			, dateAdded, addedBy, bAuditLock, bProfileUpdate, bexpirereminder
-			, bPingSent, dPingDate, bVerified, verifiedBy, dVerifiedDate, inetwork ) 
+			, bPingSent, dPingDate, bVerified, verifiedBy, dVerifiedDate, inetwork, isSuspect ) 
 		SELECT  l.newContactsID, i.Salutation, i.JobTitle, i.Firstname, i.Initial, i.Lastname, i.Suffix
 			, i.Email, i.Login, i.Password, i.salt, i.AccessID, i.Expires, i.Hits, i.LastLogin
 			, i.Status, i.ModifiedBy, i.DateModified, i.datejoined, i.membertype, i.photo
@@ -113,7 +115,7 @@ BEGIN
 			, i.TzOffset, i.iDefault_Quota, i.iDoc_Usage, i.assist_id, i.layout, i.bTOS
 			, i.bOnlineNow, i.uID, i.iwkgrplayout, i.sAboutMe, i.folder_id, i.signature
 			, i.dateAdded, tc1.id, i.bAuditLock, i.bProfileUpdate, i.bexpirereminder
-			, i.bPingSent, i.dPingDate, i.bVerified, tc2.id, i.dVerifiedDate, i.inetwork
+			, i.bPingSent, i.dPingDate, i.bVerified, tc2.id, i.dVerifiedDate, i.inetwork, i.isSuspect
 		FROM #inserts AS i 
 		INNER JOIN #legacyIDs AS l ON i.legacyID = l.legacyID 
 		INNER JOIN dbo.vw_transitionContacts AS tc1 ON tc1.contactsID = i.addedBy 
@@ -205,6 +207,7 @@ BEGIN
 			, u.data.value('@iVerifiedBy[1]', 'int') AS iVerifiedBy
 			, u.data.value('@dVerifiedDate[1]', 'datetime2') AS dVerifiedDate
 			, u.data.value('@inetwork[1]', 'int') AS inetwork
+			, u.data.value('@isSuspect[1]', 'int') AS isSuspect
 		INTO #updates
 		FROM    @dataXML.nodes('u/data') AS u ( data ) ;	
 
@@ -274,6 +277,7 @@ BEGIN
 			, verifiedBy = tc2.id
 			, dVerifiedDate = u.dVerifiedDate
 			, inetwork = u.inetwork
+			, isSuspect = u.isSuspect
 		FROM dbo.Contacts AS c
 		INNER JOIN dbo.vw_transitionContacts AS tc1 ON c.id = tc1.ID
 			AND tc1.transitionSystemsID = @systemID 		

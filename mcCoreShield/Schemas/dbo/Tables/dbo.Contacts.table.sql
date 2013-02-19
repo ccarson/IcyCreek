@@ -45,7 +45,7 @@
     [usesDaylight]    BIT              NULL,
     [TzOffset]        INT              NULL,
     [iDefault_Quota]  INT              NULL,
-    [iDoc_Usage]      DECIMAL (10)     NULL,
+    [iDoc_Usage]      DECIMAL (10)     CONSTRAINT [DF_Contacts_iDoc_Usage] DEFAULT ((0)) NULL,
     [assist_id]       INT              NULL,
     [layout]          INT              NULL,
     [bTOS]            BIT              NULL,
@@ -65,6 +65,10 @@
     [bVerified]       BIT              NULL,
     [verifiedBy]      UNIQUEIDENTIFIER NULL,
     [dVerifiedDate]   DATETIME2 (0)    NULL,
-    [inetwork]        INT              NULL
+    [inetwork]        INT              NULL,
+    [isSuspect]       BIT              CONSTRAINT [DF_Contacts_isSuspect] DEFAULT ((0)) NOT NULL,
+    CONSTRAINT [PK_Contacts] PRIMARY KEY CLUSTERED ([id] ASC)
 );
+
+
 
