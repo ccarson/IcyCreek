@@ -1,12 +1,15 @@
 ﻿CREATE TABLE [dbo].[user_search_data] (
-    [id]            INT            IDENTITY (1, 1) NOT NULL,
-    [page_URL]      NVARCHAR (250) NULL,
-    [user_ID]       INT            NULL,
-    [time_stamp]    DATETIME2 (7)  NULL,
-    [site_name]     NVARCHAR (200) NULL,
-    [form_name]     NVARCHAR (100) NULL,
-    [search_params] NVARCHAR (250) NULL
+    [id]            INT             IDENTITY (1, 1) NOT NULL,
+    [page_URL]      NVARCHAR (250)  NULL,
+    [user_ID]       INT             NULL,
+    [time_stamp]    DATETIME2 (7)   NULL,
+    [site_name]     NVARCHAR (200)  NULL,
+    [form_name]     NVARCHAR (100)  NULL,
+    [search_params] NVARCHAR (2500) NULL,
+    CONSTRAINT [PK_user_search_data] PRIMARY KEY CLUSTERED ([id] ASC)
 );
+
+
 
 
 GO

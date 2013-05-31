@@ -1,2 +1,4 @@
-﻿CREATE SYNONYM [dbo].[transitionSystems] FOR [mcCoreShield].[dbo].[transitionSystems];
+﻿CREATE SYNONYM [dbo].[transitionSystems] FOR [mcCoreShield].[Reference].[Systems];
+
+
 

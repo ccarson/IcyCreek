@@ -1,8 +1,8 @@
 ﻿CREATE TABLE [dbo].[ReportGroups] (
-    [reportGroupsID]     UNIQUEIDENTIFIER NOT NULL,
+    [reportGroupsID]     UNIQUEIDENTIFIER CONSTRAINT [DF_ReportGroups_reportGroupsID] DEFAULT (newsequentialid()) NOT NULL,
     [reportVersionsID]   UNIQUEIDENTIFIER NOT NULL,
     [title]              NVARCHAR (500)   NULL,
-    [instructions]       NVARCHAR (1000)  NULL,
+    [instructions]       NVARCHAR (MAX)   NULL,
     [description]        NVARCHAR (1000)  NULL,
     [displayOrder]       INT              NOT NULL,
     [responsesIDLabel]   NVARCHAR (500)   NULL,
@@ -14,9 +14,13 @@
     [cdUpdatedBy]        INT              NULL,
     [cdUpdatedOn]        DATETIME2 (0)    NULL,
     [cdChangeReason]     NVARCHAR (50)    NULL,
-    [active]             BIT              NULL,
-    [ForReporting]       BIT              NOT NULL
+    [active]             BIT              CONSTRAINT [DF_ReportGroups_active] DEFAULT ((1)) NULL,
+    [ForReporting]       BIT              CONSTRAINT [DF_ReportGroups_ForReporting] DEFAULT ((0)) NOT NULL,
+    CONSTRAINT [PK_ReportGroups] PRIMARY KEY CLUSTERED ([reportGroupsID] ASC),
+    CONSTRAINT [FK_ReportGroups_ReportVersions] FOREIGN KEY ([reportVersionsID]) REFERENCES [dbo].[ReportVersions] ([reportVersionsID])
 );
+
+
 
 
 GO

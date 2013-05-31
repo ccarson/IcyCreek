@@ -7,7 +7,7 @@ SET NOCOUNT ON;
 	SELECT userSystemName, i.legacyID 
 	FROM mcCoreShield.dbo.transitionIdentities AS i
 	INNER JOIN mcCoreShield.dbo.Contacts AS c ON c.id = i.id
-	INNER JOIN mcCoreShield.dbo.transitionSystems AS s
+	INNER JOIN mcCoreShield.[Reference].Systems AS s
 	ON s.id = i.transitionSystemsID
 	WHERE c.Email = @email;
 

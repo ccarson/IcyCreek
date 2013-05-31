@@ -2,9 +2,9 @@
     [reportGroupQuestionsID] UNIQUEIDENTIFIER NOT NULL,
     [reportGroupsID]         UNIQUEIDENTIFIER NOT NULL,
     [reportDataTypesID]      INT              NOT NULL,
-    [label]                  NVARCHAR (2000)  NULL,
+    [label]                  NVARCHAR (MAX)   NULL,
     [reportColumnLabel]      NVARCHAR (200)   NULL,
-    [instructions]           NVARCHAR (4000)  NULL,
+    [instructions]           NVARCHAR (MAX)   NULL,
     [displayOrder]           INT              NOT NULL,
     [isRequired]             BIT              NOT NULL,
     [validateAs]             NVARCHAR (100)   NOT NULL,
@@ -20,8 +20,14 @@
     [reportValue]            NCHAR (200)      NULL,
     [DisplayOnPage]          INT              NOT NULL,
     [questLayout]            NVARCHAR (50)    NULL,
-    [QuestionWieght]         INT              NOT NULL
+    [QuestionWieght]         MONEY            CONSTRAINT [DF_ReportGroupQuestions_QuestionWieght] DEFAULT ((0)) NOT NULL,
+    [isHidden]               BIT              DEFAULT ((0)) NOT NULL,
+    CONSTRAINT [PK_ReportGroupQuestions] PRIMARY KEY CLUSTERED ([reportGroupQuestionsID] ASC),
+    CONSTRAINT [FK_ReportGroupQuestions_ReportGroups] FOREIGN KEY ([reportGroupsID]) REFERENCES [dbo].[ReportGroups] ([reportGroupsID]),
+    CONSTRAINT [FK_ReportGroupQuestions_responseTypes] FOREIGN KEY ([reportDataTypesID]) REFERENCES [dbo].[ReportDataTypes] ([reportDataTypesID])
 );
+
+
 
 
 GO

@@ -10,9 +10,14 @@
     [password]             NVARCHAR (255)  NOT NULL,
     [notifyOnFileDownload] BIT             NULL,
     [filesize]             NUMERIC (20, 2) NOT NULL,
-    [requirelogin]         BIT             NOT NULL,
-    [group_id]             INT             NOT NULL,
-    [active]               BIT             NOT NULL,
-    [filePath]             NVARCHAR (255)  NULL
+    [requirelogin]         BIT             CONSTRAINT [DF_large_file_upload_utility_requirelogin] DEFAULT ((0)) NOT NULL,
+    [group_id]             INT             CONSTRAINT [DF_large_file_upload_utility_group_id] DEFAULT ('0') NOT NULL,
+    [active]               BIT             CONSTRAINT [DF_large_file_upload_utility_active] DEFAULT ('1') NOT NULL,
+    [filePath]             NVARCHAR (255)  NULL,
+    [uploaded]             BIT             CONSTRAINT [DF_large_file_upload_utility_uploaded] DEFAULT ((0)) NOT NULL,
+    [OrgFilePath]          NVARCHAR (255)  NULL,
+    CONSTRAINT [PK_large_file_upload_utility_id] PRIMARY KEY CLUSTERED ([id] ASC, [uniqueFileId] ASC)
 );
+
+
 

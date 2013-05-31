@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE dbo.findFiles (
+﻿CREATE PROCEDURE [dbo].[findFiles] (
 	@userID			AS INT
 	, @searchTerms	AS NVARCHAR(max)
 	, @sortField	AS NVARCHAR(40) = NULL
@@ -29,6 +29,11 @@ BEGIN
 	DECLARE @likeOperator	AS NCHAR(1) = N'%' ;
 
 	DECLARE @keywordsTable AS TABLE ( searchTerm NVARCHAR(300) ) ;
+
+	DECLARE @vfcFiles		AS TABLE ( fileID uniqueidentifier PRIMARY KEY CLUSTERED ) ;
+
+	DECLARE @keywordFiles	AS TABLE ( fileID uniqueidentifier PRIMARY KEY CLUSTERED ) ; 
+
 	
 --	remove trailing delimiter from @searchTerms if it exists
 	IF RIGHT(@searchTerms, 1) = @delimiter
@@ -41,24 +46,23 @@ BEGIN
 
 --	update searchTerms, prepending and appending % so we can use LIKE operator	       
 	UPDATE  @keywordsTable
-	   SET  searchTerm = @likeOperator + searchTerm + @likeOperator ; 
+	   SET  searchTerm = searchTerm + @likeOperator ; 
+
+	INSERT	@vfcFiles
+	SELECT  DISTINCT uid FROM dbo.vfc_File
+	 WHERE  EXISTS ( SELECT 1 FROM @keywordsTable k WHERE sComments LIKE k.searchTerm ) 
+	    OR  EXISTS ( SELECT 1 FROM @keywordsTable k WHERE sName LIKE k.searchTerm ) 	    
+		OR  EXISTS ( SELECT 1 FROM @keywordsTable k WHERE sSubject LIKE k.searchTerm ) ; 
+
+	INSERT  @vfcFiles
+	SELECT  DISTINCT fileID 
+	  FROM  dbo.vfc_file_keywords
+	 WHERE  EXISTS ( SELECT 1 FROM @keywordsTable k WHERE keyword LIKE k.searchTerm )
+	   AND  fileID NOT IN ( SELECT fileID FROM @vfcFiles ) ; 
+
+
 
 --	query vfc_file for records matching search terms
-	WITH	
-	vfcFileList ( fileID ) AS  ( 
-		SELECT  uid
-		  FROM  dbo.vfc_file
-		 INNER  JOIN @keywordsTable AS k
-		    ON	sComments LIKE searchTerm OR
-				sName	  LIKE searchTerm OR
-				sSubject  LIKE searchTerm ) , 
-				
-	keywordFileList ( fileID ) AS  ( 
-		SELECT  fileID
-	      FROM  dbo.vfc_file_keywords
-		 INNER  JOIN @keywordsTable AS k
-		    ON	keyword LIKE searchTerm ) 
-		    
 	SELECT DISTINCT 
 		  f.ID, f.MIMETypeID, f.ParentFolderID AS folderID
 		, f.iByteSize, f.sName, f.serverFileName, f.sAuthor
@@ -79,7 +83,8 @@ BEGIN
 		, mc.firstname, mc.lastname, ace.igrouproleid, mt.sFileExtension
 		, fos.UserGroupID, 0 AS privatefile
 	INTO  #fileData
-	FROM  dbo.vfc_file AS f
+	FROM  dbo.vfc_file			 AS f 
+   INNER  JOIN @vfcFiles		 AS vf  ON vf.fileID = f.uid 
 	LEFT  JOIN dbo.vfc_folder    AS fld	ON fld.id = f.ParentFolderID
 	LEFT  JOIN dbo.vfc_fileace   AS ace	ON ace.FileID = f.id
    INNER  JOIN dbo.mc_contact    AS mc	ON mc.ID = f.createdbyuserid
@@ -87,9 +92,7 @@ BEGIN
 	LEFT  JOIN dbo.vfc_folderace AS fos	ON f.ParentFolderID = fos.FolderID
    WHERE  ace.iuserid = @userID 
      AND  f.bActive = 1 
-     AND  f.bDeleted = 0
-	 AND  ( EXISTS ( SELECT 1 FROM vfcFileList AS vfc WHERE vfc.fileID = f.uid ) OR
-			EXISTS ( SELECT 1 FROM keywordFileList AS k WHERE k.fileID = f.uid ) ) ;
+     AND  f.bDeleted = 0 ; 
 
 
 	SELECT	@sortOrder = CASE @sortField

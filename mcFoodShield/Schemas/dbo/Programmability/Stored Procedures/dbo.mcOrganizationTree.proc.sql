@@ -25,12 +25,12 @@ BEGIN
 		SET @startingOrgDept = (
 			SELECT id FROM mc_org_departments
 			WHERE org_id = @startingOrg 
-				AND org_level = 0 )
+				AND org_Level = 0 )
 	END
 	ELSE
 	BEGIN
 		SET @startingLevel = ( 
-			SELECT org_level FROM mc_org_departments
+			SELECT org_Level FROM mc_org_departments
 			WHERE id = @startingOrgDept )
 			
 		IF (@includeParent = 1 )
@@ -78,7 +78,7 @@ BEGIN
 	UPDATE #orgStructure SET 
 		name = A.name 
 		, parent_dept_id = A.parent_dept_id
-		, org_level = A.org_level
+		, org_level = A.orgLevel
 	FROM mc_org_departments as A 
 	WHERE #orgStructure.id = A.id 
 		AND #orgStructure.parent_dept_id IS NULL; 
